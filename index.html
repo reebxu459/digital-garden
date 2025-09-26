@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Digital Garden</title>
+  <link rel="stylesheet" href="./style.css">
+  <script>
+    // Simple responsive image map scaler
+    (function() {
+      function scaleMap(img) {
+        const mapName = img.getAttribute('usemap');
+        if (!mapName) return;
+        const map = document.querySelector(`map[name="${mapName.substring(1)}"]`);
+        if (!map) return;
+
+        const areas = map.querySelectorAll('area[data-original-coords]');
+        const naturalWidth = img.naturalWidth || img.width;
+        const naturalHeight = img.naturalHeight || img.height;
+        const currentWidth = img.clientWidth;
+        const currentHeight = img.clientHeight;
+        const scaleX = currentWidth / naturalWidth;
+        const scaleY = currentHeight / naturalHeight;
+
+        areas.forEach(area => {
+          const original = area.getAttribute('data-original-coords').split(',').map(Number);
+          const shape = (area.getAttribute('shape') || '').toLowerCase();
+          let scaled;
+          if (shape === 'rect') {
+            const [x1, y1, x2, y2] = original;
+            scaled = [
+              Math.round(x1 * scaleX), Math.round(y1 * scaleY),
+              Math.round(x2 * scaleX), Math.round(y2 * scaleY)
+            ];
+          } else if (shape === 'circle') {
+            const [cx, cy, r] = original;
+            const rScaled = Math.round(r * ((scaleX + scaleY) / 2));
+            scaled = [Math.round(cx * scaleX), Math.round(cy * scaleY), rScaled];
+          } else if (shape === 'poly') {
+            scaled = original.map((v, i) => Math.round(v * (i % 2 === 0 ? scaleX : scaleY)));
+          } else {
+            scaled = original;
+          }
+          area.coords = scaled.join(',');
+        });
+      }
+
+      function initResponsiveMap() {
+        const img = document.querySelector('img[usemap]');
+        if (!img) return;
+        const mapName = img.getAttribute('usemap');
+        const map = document.querySelector(`map[name="${mapName.substring(1)}"]`);
+        if (!map) return;
+        map.querySelectorAll('area').forEach(area => {
+          if (!area.hasAttribute('data-original-coords')) {
+            area.setAttribute('data-original-coords', area.coords);
+          }
+        });
+        function onReady() { scaleMap(img); }
+        if (img.complete) onReady(); else img.addEventListener('load', onReady, { once: true });
+        window.addEventListener('resize', () => scaleMap(img));
+      }
+
+      document.addEventListener('DOMContentLoaded', initResponsiveMap);
+    })();
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <link rel="icon" href="data:,">
+  <meta name="description" content="Digital Garden">
+  <meta name="robots" content="noindex, nofollow">
+  
+</head>
+<body>
+  <main class="page-container">
+    <div class="image-wrapper">
+      <div class="stacked-slices">
+        <img src="./pages/mainpage/mainpage-header.jpg" alt="Header">
+        <img src="./pages/mainpage/mainpage-bow-divider.jpg" alt="Bow divider">
+        <a href="./resume.html" target="_blank" aria-label="Open resume">
+            <img src="./pages/mainpage/mainpage-resume-button.jpg" alt="Resume button">
+        </a>
+        <img src="./pages/mainpage/mainpage-plane-divider.jpg" alt="Plane divider">
+        <img src="./pages/mainpage/mainpage-bio.jpg" alt="Bio section">
+        <img src="./pages/mainpage/mainpage-bow-divider.jpg" alt="Bow divider">
+        <img src="./pages/mainpage/mainpage-bio2.jpg" alt="Bio section continued">
+        <img src="./pages/mainpage/mainpage-plane-divider.jpg" alt="Plane divider">
+        <img src="./pages/mainpage/mainpage-hobbies.jpg" alt="Hobbies">
+        <img src="./pages/mainpage/mainpage-bow-divider.jpg" alt="Bow divider">
+        <img src="./pages/mainpage/mainpage-food.jpg" alt="Food">
+        <img src="./pages/mainpage/mainpage-plane-divider.jpg" alt="Plane divider">
+        <img src="./pages/mainpage/mainpage-footer.jpg" alt="Footer">
+    </div>
+  </main>
+</body>
+</html>
+

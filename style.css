@@ -1,0 +1,84 @@
+/* Layout: center the image, adjust side margins responsively */
+html, body {
+  margin: 0;
+  padding: 0;
+  background: #b9e0e8 !important;
+}
+
+body {
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  background: #b9e0e8;
+  color: CanvasText;
+}
+
+.page-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100dvh;
+  padding-left: 6vw;
+  padding-right: 6vw;
+}
+
+/* Increase side margins on very large screens, reduce on small screens */
+@media (min-width: 1200px) {
+  .page-container { padding-left: 12vw; padding-right: 12vw; }
+}
+
+@media (max-width: 600px) {
+  .page-container { padding-left: 4vw; padding-right: 4vw; }
+}
+
+.image-wrapper {
+  width: 100%;
+  max-width: 700px; /* cap max visual width for a skinny layout */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.image-wrapper img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Stack layout for sliced mainpage */
+.stacked-slices {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.stacked-slices img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.resume-box {
+  position: absolute;
+  /* Debug placement: make the box large and at the top-left of the image */
+  left: 0;
+  top: 19%;
+  width: 100%;
+  height: 6%;
+  display: block;
+  /* outline: 3px dashed #ff4d00; 
+  background: rgba(255, 77, 0, 0.15); */
+  z-index: 2;
+  cursor: pointer;
+}
+
+.clash-royale-box {
+    position: absolute;
+    /* Debug placement: make the box large and at the top-left of the image */
+    left: 54%;
+    top: 130%;
+    width: 20%;
+    height: 5%;
+    display: block;
+    outline: 3px dashed #ff4d00; 
+    background: rgba(255, 77, 0, 0.15);
+    z-index: 2;
+    cursor: pointer;
+}
