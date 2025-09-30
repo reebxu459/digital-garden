@@ -5,6 +5,63 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Digital Garden</title>
   <link rel="stylesheet" href="./style.css">
+  <style>
+    /* Loading screen styles */
+    #loading-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #b9e0e8;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      opacity: 1;
+      transition: opacity 0.8s ease-out;
+      visibility: visible;
+    }
+    
+    #loading-screen.fade-out {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+    
+    #loading-image-container {
+      position: relative;
+      display: inline-block;
+    }
+    
+    #loading-image {
+      max-width: 200px;
+      max-height: 200px;
+      width: auto;
+      height: auto;
+      display: block;
+    }
+    
+    #loading-gradient {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 30px;
+      background: linear-gradient(to bottom, transparent, #b9e0e8);
+      pointer-events: none;
+    }
+    
+    /* Hide main content initially */
+    .page-container {
+      opacity: 0;
+      transition: opacity 0.7s ease-in;
+    }
+    
+    .page-container.show {
+      opacity: 1;
+    }
+  </style>
   <script>
     // Simple responsive image map scaler
     (function() {
@@ -63,14 +120,51 @@
 
       document.addEventListener('DOMContentLoaded', initResponsiveMap);
     })();
+    
+    // Loading screen functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const loadingScreen = document.getElementById('loading-screen');
+      const pageContainer = document.querySelector('.page-container');
+      
+      console.log('Loading screen elements found:', { loadingScreen, pageContainer });
+      
+      if (loadingScreen && pageContainer) {
+        console.log('Starting loading screen timer...');
+        
+        // Show loading screen for 2 seconds, then fade out
+        setTimeout(() => {
+          console.log('Adding fade-out class...');
+          loadingScreen.classList.add('fade-out');
+          pageContainer.classList.add('show');
+          
+          // Remove loading screen from DOM after fade completes
+          setTimeout(() => {
+            console.log('Removing loading screen from DOM...');
+            if (loadingScreen.parentNode) {
+              loadingScreen.remove();
+            }
+          }, 800); // Match the CSS transition duration
+        }, 2500); // 2.5 seconds
+      } else {
+        console.error('Loading screen elements not found!');
+      }
+    });
   </script>
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <link rel="icon" href="data:,">
+  <link rel="icon" href="./assets/me.png" type="image/png">
   <meta name="description" content="Digital Garden">
   <meta name="robots" content="noindex, nofollow">
   
 </head>
 <body>
+  <!-- Loading screen -->
+  <div id="loading-screen">
+    <div id="loading-image-container">
+      <img src="./assets/the_thinker.gif" alt="Loading..." id="loading-image">
+      <div id="loading-gradient"></div>
+    </div>
+  </div>
+  
   <main class="page-container">
     <div class="image-wrapper">
       <div class="stacked-slices">
