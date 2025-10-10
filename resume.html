@@ -9,9 +9,62 @@
   <style>
     /* Page-specific background for the resume page */
     html, body { background: #fce98e !important; }
+    /* Fixed social icons in top-left */
+    .social-fixed {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      left: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      align-items: flex-end;
+      z-index: 1000;
+    }
+    .social-fixed img {
+      width: 70px;
+      height: 70px;
+      object-fit: cover;
+      box-sizing: border-box;
+      border-radius: 40px;
+      border: 7px solid red;
+      animation: rainbow-border 2.0s steps(7, end) infinite;
+    }
+    @keyframes rainbow-border {
+      0% { border-color: #ffadad; }       /* pastel red */
+      14.285% { border-color: #ffd6a5; }  /* pastel orange */
+      28.571% { border-color: #fdffb6; }  /* pastel yellow */
+      42.857% { border-color: #caffbf; }  /* pastel green */
+      57.142% { border-color: #a0c4ff; }  /* pastel blue */
+      71.428% { border-color: #bdb2ff; }  /* pastel indigo */
+      85.714% { border-color: #ffc6ff; }  /* pastel violet */
+      100% { border-color: #ffadad; }
+    }
+
+    /* Make icons larger on big screens while keeping current size on small */
+    @media (min-width: 850px) {
+      .social-fixed {
+        top: 20px;
+        left: 20px;
+        right: auto;
+        align-items: flex-start;
+      }
+      .social-fixed img {
+        width: 140px;
+        height: 140px;
+      }
+    }
   </style>
 </head>
 <body>
+  <div class="social-fixed" aria-label="Social links">
+    <a href="https://github.com/reebxu459" target="_blank" rel="noopener noreferrer" aria-label="Open GitHub profile in new tab">
+      <img src="./pages/resumepage/github.jpg" alt="GitHub">
+    </a>
+    <a href="https://www.linkedin.com/in/r25xu/" target="_blank" rel="noopener noreferrer" aria-label="Open LinkedIn profile in new tab">
+      <img src="./pages/resumepage/linkedin.jpg" alt="LinkedIn">
+    </a>
+  </div>
   <main class="page-container">
     <div class="image-wrapper">
       <div class="stacked-slices">
