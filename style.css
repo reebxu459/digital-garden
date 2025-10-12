@@ -106,7 +106,21 @@ body {
 }
 
 
+/* education */
+.slice-education .overlay-waterloo {
+  position: absolute;
+  top: 65%;
+  left: 28%;
+  width: 280px;         /* pick your fixed size */
+  height: 160px;
+  transform: translate(-50%, -50%);
+  /* outline: 3px dashed #ff4d00;
+  background: rgba(255, 77, 0, 0.15); */
 
+  z-index: 10;
+  pointer-events: auto; /* blocks clicks to the link below */
+  box-sizing: border-box;
+}
 
 /* company logo links */
 .slice-experience .overlay-abnormal {
