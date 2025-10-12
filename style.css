@@ -47,6 +47,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 0;
+  position:relative;
 }
 
 .stacked-slices img {
@@ -54,6 +55,9 @@ body {
   height: auto;
   display: block;
 }
+
+.slice { position: relative; }
+.slice img { display: block; width: 100%; height: auto; }
 
 .resume-box {
   position: absolute;
@@ -69,16 +73,131 @@ body {
   cursor: pointer;
 }
 
-.clash-royale-box {
-    position: absolute;
-    /* Debug placement: make the box large and at the top-left of the image */
-    left: 54%;
-    top: 130%;
-    width: 20%;
-    height: 5%;
-    display: block;
-    outline: 3px dashed #ff4d00; 
-    background: rgba(255, 77, 0, 0.15);
-    z-index: 2;
-    cursor: pointer;
+.slice-hobbies .overlay-link {
+  position: absolute;
+  top: 65%;
+  left: 64%;
+  width: 140px;
+  height: 140px;
+  transform: translate(-50%, -50%);
+  z-index: 5;
+  /* debug: */
+  /* outline: 2px dashed #ff4d00;
+  background: rgba(255, 77, 0, 0.15); */
+  display: block;
+  box-sizing: border-box;
 }
+
+/* journal entries */
+
+.slice-py-one-line .ans-link {
+  position: absolute;
+  top: 96%;
+  left: 25%;
+  width: 240px;         /* pick your fixed size */
+  height: 40px;
+  transform: translate(-50%, -50%);
+  /* outline: 3px dashed #ff4d00;
+  background: rgba(255, 77, 0, 0.15); */
+
+  z-index: 10;
+  pointer-events: auto; /* blocks clicks to the link below */
+  box-sizing: border-box;
+}
+
+
+
+
+/* company logo links */
+.slice-experience .overlay-abnormal {
+  position: absolute;
+  top: 23%;
+  left: 18%;
+  width: 160px;         /* pick your fixed size */
+  height: 160px;
+  transform: translate(-50%, -50%);
+  /* outline: 3px dashed #ff4d00;
+  background: rgba(255, 77, 0, 0.15); */
+
+  z-index: 10;
+  pointer-events: auto; /* blocks clicks to the link below */
+  box-sizing: border-box;
+}
+
+.slice-experience .overlay-borealis {
+  position: absolute;
+  top: 44.5%;
+  left: 18%;
+  width: 160px;         /* pick your fixed size */
+  height: 160px;
+  transform: translate(-50%, -50%);
+  /* outline: 3px dashed #ff4d00;
+  background: rgba(255, 77, 0, 0.15); */
+
+  z-index: 10;
+  pointer-events: auto; /* blocks clicks to the link below */
+  box-sizing: border-box;
+}
+
+.slice-experience .overlay-awn {
+  position: absolute;
+  top: 66%;
+  left: 18%;
+  width: 160px;         /* pick your fixed size */
+  height: 160px;
+  transform: translate(-50%, -50%);
+  /* outline: 3px dashed #ff4d00;
+  background: rgba(255, 77, 0, 0.15); */
+
+  z-index: 10;
+  pointer-events: auto; /* blocks clicks to the link below */
+  box-sizing: border-box;
+}
+
+.slice-experience .overlay-etr {
+  position: absolute;
+  top: 87.5%;
+  left: 18%;
+  width: 160px;         /* pick your fixed size */
+  height: 160px;
+  transform: translate(-50%, -50%);
+  /* outline: 3px dashed #ff4d00;
+  background: rgba(255, 77, 0, 0.15); */
+
+  z-index: 10;
+  pointer-events: auto; /* blocks clicks to the link below */
+  box-sizing: border-box;
+}
+
+/* leadership */
+.slice-leadership .overlay-htn {
+  position: absolute;
+  top: 47%;
+  left: 18%;
+  width: 160px;         /* pick your fixed size */
+  height: 160px;
+  transform: translate(-50%, -50%);
+  /* outline: 3px dashed #ff4d00;
+  background: rgba(255, 77, 0, 0.15); */
+
+  z-index: 10;
+  pointer-events: auto; /* blocks clicks to the link below */
+  box-sizing: border-box;
+}
+.slice-leadership .overlay-watstreet {
+  position: absolute;
+  top: 78%;
+  left: 18%;
+  width: 160px;         /* pick your fixed size */
+  height: 160px;
+  transform: translate(-50%, -50%);
+  /* outline: 3px dashed #ff4d00;
+  background: rgba(255, 77, 0, 0.15); */
+
+  z-index: 10;
+  pointer-events: auto; /* blocks clicks to the link below */
+  box-sizing: border-box;
+}
+
+
+
