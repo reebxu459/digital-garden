@@ -191,9 +191,19 @@
         <!-- Journal Begins -->
         <img src="./pages/mainpage/mainpage-journal-header.jpg" alt="Journal">
         <img src="./pages/journal/journal-roses-divider.jpg" alt="Roses divider">
-        <img src="./pages/journal/tools.jpg" alt="Tools Journal Entry">
+
+        <!-- Brainteaser Section -->
+        <div class="slice slice-brainteaser">
+          <img src="./pages/mainpage/brainteaser-wine/brainteaser-desc.jpg" alt="Brainteaser description">
+
+          <div id="bt-content">
+            <button id="bt-button" class="bt-button" data-step="1">
+              <img src="./pages/mainpage/brainteaser-wine/hint-1-button.jpg" alt="Show Hint 1">
+            </button>
+          </div>
+        </div>
+
         <img src="./pages/journal/journal-roses-divider.jpg" alt="Roses divider">
-        
 
         <div class="slice slice-py-one-line">
           <img src="./pages/journal/python-one-liners.jpg" alt="Python One Liners Journal Entry">
@@ -201,11 +211,61 @@
         </div>
 
         <img src="./pages/journal/journal-roses-divider.jpg" alt="Roses divider">
+
+        <img src="./pages/journal/tools.jpg" alt="Tools Journal Entry">
+        <img src="./pages/journal/journal-roses-divider.jpg" alt="Roses divider">
+        
         <!-- Journal Ends -->
 
         <img src="./pages/mainpage/mainpage-footer.jpg" alt="Footer">
     </div>
   </main>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const container = document.getElementById('bt-content');
+      const button = document.getElementById('bt-button');
+    
+      const steps = [
+        {  // step 1 → reveal Hint 1 and show Hint 2 button
+          revealImage: "./pages/mainpage/brainteaser-wine/hint-1-reveal.jpg",
+          nextButton: "./pages/mainpage/brainteaser-wine/hint-2-button.jpg",
+          nextAlt: "Show Hint 2"
+        },
+        {  // step 2 → reveal Hint 2 and show Answer button
+          revealImage: "./pages/mainpage/brainteaser-wine/hint-2-reveal.jpg",
+          nextButton: "./pages/mainpage/brainteaser-wine/answer-button.jpg",
+          nextAlt: "Show Answer"
+        },
+        {  // step 3 → reveal Answer and remove button
+          revealImage: "./pages/mainpage/brainteaser-wine/answer-reveal.jpg",
+          nextButton: null
+        }
+      ];
+    
+      button.addEventListener('click', () => {
+        const step = parseInt(button.dataset.step, 10);
+        const info = steps[step - 1];
+        if (!info) return;
+    
+        // add the new reveal image under the last one
+        const reveal = document.createElement('img');
+        reveal.src = info.revealImage;
+        reveal.alt = `Hint ${step} Reveal`;
+        reveal.style.display = 'block';
+        reveal.style.width = '100%';
+        container.insertBefore(reveal, button);
+    
+        // swap or remove the button
+        if (info.nextButton) {
+          button.querySelector('img').src = info.nextButton;
+          button.querySelector('img').alt = info.nextAlt;
+          button.dataset.step = step + 1;
+        } else {
+          button.remove();
+        }
+      });
+    });
+    </script>
 </body>
 </html>
 
