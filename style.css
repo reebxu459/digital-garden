@@ -134,6 +134,12 @@ body {
 }
 
 
+/* Debug: translucent hitboxes while placing overlays. Comment this block out when done. */
+/* .slice a[class^="overlay-"] {
+  outline: 2px dashed #ff4d00;
+  background: rgba(255, 77, 0, 0.28);
+} */
+
 /* education */
 .slice-education .overlay-waterloo {
   position: absolute;
@@ -151,65 +157,28 @@ body {
 }
 
 /* company logo links */
-.slice-experience .overlay-abnormal {
-  position: absolute;
-  top: 23%;
-  left: 18%;
-  width: 160px;         /* pick your fixed size */
-  height: 160px;
-  transform: translate(-50%, -50%);
-  /* outline: 3px dashed #ff4d00;
-  background: rgba(255, 77, 0, 0.15); */
-
-  z-index: 10;
-  pointer-events: auto; /* blocks clicks to the link below */
-  box-sizing: border-box;
-}
-
-.slice-experience .overlay-borealis {
-  position: absolute;
-  top: 44.5%;
-  left: 18%;
-  width: 160px;         /* pick your fixed size */
-  height: 160px;
-  transform: translate(-50%, -50%);
-  /* outline: 3px dashed #ff4d00;
-  background: rgba(255, 77, 0, 0.15); */
-
-  z-index: 10;
-  pointer-events: auto; /* blocks clicks to the link below */
-  box-sizing: border-box;
-}
-
-.slice-experience .overlay-awn {
-  position: absolute;
-  top: 66%;
-  left: 18%;
-  width: 160px;         /* pick your fixed size */
-  height: 160px;
-  transform: translate(-50%, -50%);
-  /* outline: 3px dashed #ff4d00;
-  background: rgba(255, 77, 0, 0.15); */
-
-  z-index: 10;
-  pointer-events: auto; /* blocks clicks to the link below */
-  box-sizing: border-box;
-}
-
+.slice-experience .overlay-nvidia,
+.slice-experience .overlay-rokt,
+.slice-experience .overlay-abnormal,
+.slice-experience .overlay-borealis,
+.slice-experience .overlay-awn,
 .slice-experience .overlay-etr {
   position: absolute;
-  top: 87.5%;
   left: 18%;
-  width: 160px;         /* pick your fixed size */
+  width: 160px;
   height: 160px;
   transform: translate(-50%, -50%);
-  /* outline: 3px dashed #ff4d00;
-  background: rgba(255, 77, 0, 0.15); */
-
   z-index: 10;
-  pointer-events: auto; /* blocks clicks to the link below */
+  pointer-events: auto;
   box-sizing: border-box;
 }
+
+.slice-experience .overlay-nvidia { top: 16.6%; }
+.slice-experience .overlay-rokt { top: 31.9%; }
+.slice-experience .overlay-abnormal { top: 47.2%; }
+.slice-experience .overlay-borealis { top: 62.2%; }
+.slice-experience .overlay-awn { top: 77.1%; }
+.slice-experience .overlay-etr { top: 91.9%; }
 
 /* leadership */
 .slice-leadership .overlay-htn {
