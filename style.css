@@ -118,12 +118,27 @@ body {
 
 /* journal entries */
 
-.slice-py-one-line .ans-link {
+.slice-py-one-line .overlay-ans-link {
   position: absolute;
   top: 96%;
   left: 25%;
   width: 240px;         /* pick your fixed size */
   height: 40px;
+  transform: translate(-50%, -50%);
+  /* outline: 3px dashed #ff4d00;
+  background: rgba(255, 77, 0, 0.15); */
+
+  z-index: 10;
+  pointer-events: auto; /* blocks clicks to the link below */
+  box-sizing: border-box;
+}
+
+.slice-broadway .overlay-broadway-link {
+  position: absolute;
+  top: 91%;
+  left: 50%;
+  width: 240px;         /* pick your fixed size */
+  height: 140px;
   transform: translate(-50%, -50%);
   /* outline: 3px dashed #ff4d00;
   background: rgba(255, 77, 0, 0.15); */
